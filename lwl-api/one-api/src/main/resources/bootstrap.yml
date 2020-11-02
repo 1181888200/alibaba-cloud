@@ -1,0 +1,13 @@
+server:
+  port: 6060
+spring:
+  application:
+    name: one-api
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.31.33:8848
+feign:
+  hystrix:
+    enabled: true
+

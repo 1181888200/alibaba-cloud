@@ -1,0 +1,25 @@
+server:
+  port: 5050
+spring:
+  application:
+    name: zipkin-api
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.31.33:8848
+    sentinel:
+      transport:
+        dashboard: 192.168.31.33:8858
+        port: 8719
+      eager: true # 默认false是懒加载，设置为true 启动加载
+  main:
+    allow-bean-definition-overriding: true
+  zipkin:
+    base-url: http://192.168.31.33:9411
+  sleuth:
+    sampler:
+      probability: 1
+feign:
+  hystrix:
+    enabled: true
+

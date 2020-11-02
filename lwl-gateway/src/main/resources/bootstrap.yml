@@ -1,0 +1,32 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: lwl-gateway
+  zipkin:
+    base-url: http://192.168.31.33:9411
+  sleuth:
+    sampler:
+      probability: 1
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.31.33:8848
+    gateway:
+      routes:
+        - id: config-route
+          uri: lb://lwl-config
+          predicates:
+            - Path=/config/**
+        - id: api-route
+          uri: lb://one-api
+          predicates:
+            - Path=/api/**
+        - id: sentinel-route
+          uri: lb://sentinel-api
+          predicates:
+            - Path=/sentinel/**
+        - id: zipkin-route
+          uri: lb://zipkin-api
+          predicates:
+            - Path=/zipkin/**

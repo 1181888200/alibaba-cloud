@@ -1,0 +1,13 @@
+server:
+  port: 7070
+spring:
+  application:
+    name: lwl-config
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.31.33:8848
+      config:
+        server-addr: 192.168.31.33:8848
+        file-extension: yaml
+        name: lwl-config
